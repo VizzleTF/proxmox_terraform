@@ -10,4 +10,12 @@ vms:
     disk_size: 20
     tags: [modules, yaml_config]
     description: "Modules are awesome!"
-    image_file: "ubuntu-22.04-server-cloudimg-amd64.img"
+  - vm_id: 4323
+    vm_name: third-vm
+    address: 10.11.12.161/24
+    node_name: pve4
+    cores: 2
+    ram: 2048
+    disk_size: 20
+    tags: [modules, yaml_config]
+    description: "Modules are awesome!"
