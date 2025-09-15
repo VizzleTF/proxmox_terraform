@@ -1,0 +1,13 @@
+tags:
+  - terraform
+vms:
+  - vm_id: 4322
+    vm_name: second-vm
+    address: 10.11.12.160/24
+    node_name: pve3
+    cores: 2
+    ram: 2048
+    disk_size: 20
+    tags: [modules, yaml_config]
+    description: "Modules are awesome!"
+    image_file: "ubuntu-22.04-server-cloudimg-amd64.img"
