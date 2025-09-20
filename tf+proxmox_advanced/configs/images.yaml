@@ -1,0 +1,59 @@
+global:
+  node_name: "pve1"
+  datastore_id: "local"
+  upload_timeout: 3600
+  overwrite: false
+
+images:
+  ubuntu_22_04:
+    enabled: true
+    content_type: "import"
+    url: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+    file_name: "ubuntu-22.04-cloudimg-amd64.img"
+    checksum: "sha256:b2175cd98cfb13f0b5493e8c8b0e6d6c8b2e6b6b6b6b6b6b6b6b6b6b6b6b6b6b"
+    checksum_algorithm: "sha256"
+    # Override global settings for this image
+    node_name: "pve2"  # Use different node
+    upload_timeout: 7200  # Longer timeout for this image
+
+  debian_12:
+    enabled: true
+    content_type: "import"
+    url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"
+    file_name: "debian-12-generic-amd64.qcow2"
+    checksum: "sha256:d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d"
+    checksum_algorithm: "sha256"
+    # Use different datastore for this image
+    datastore_id: "fast-ssd"
+
+  centos_stream_9:
+    enabled: false
+    content_type: "import"
+    url: "https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-latest.x86_64.qcow2"
+    file_name: "centos-stream-9-generic-cloud.qcow2"
+    checksum: "sha256:c2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d"
+    checksum_algorithm: "sha256"
+
+  rocky_linux_9:
+    enabled: true
+    content_type: "import"
+    url: "https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
+
+  almalinux_9:
+    enabled: false
+    content_type: "import"
+    url: "https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2"
+    file_name: "almalinux-9-generic-cloud.qcow2"
+
+  # LXC Templates
+  ubuntu_22_04_lxc:
+    enabled: false
+    content_type: "vztmpl"
+    url: "http://download.proxmox.com/images/system/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
+    file_name: "ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
+
+  debian_12_lxc:
+    enabled: false
+    content_type: "vztmpl"
+    url: "http://download.proxmox.com/images/system/debian-12-standard_12.2-1_amd64.tar.zst"
+    file_name: "debian-12-standard_12.2-1_amd64.tar.zst"
