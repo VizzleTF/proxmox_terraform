@@ -1,0 +1,44 @@
+global:
+  node_name: "pve1"
+  datastore_id: "local-lvm"
+  gateway: "10.11.12.52"
+  dns_servers: ["10.11.12.52"]
+  cores: 2
+  ram: 2048
+  disk_size: 20
+  pool_id: null
+  boot_order: ["sata0"]
+  startup_order: 2
+  startup_up_delay: 5
+  cpu_type: "host"
+  network_bridge: "vmbr0"
+  os_type: "l26"
+
+tags:
+  - terraform
+
+vms:
+  second-vm:
+    enabled: true
+    vm_id: 4322
+    address: "10.11.12.160/24"
+    node_name: "pve3"  # Override global node_name
+    tags: ["modules", "yaml_config"]
+    description: "Modules are awesome!"
+    
+  third-vm:
+    enabled: true
+    vm_id: 4323
+    address: "10.11.12.161/24"
+    node_name: "pve4"  # Override global node_name
+    cores: 4  # Override global cores
+    ram: 4096  # Override global ram
+    tags: ["modules", "yaml_config"]
+    description: "Modules are awesome!"
+    
+  fourth-vm:
+    enabled: false
+    vm_id: 4324
+    address: "10.11.12.162/24"
+    tags: ["modules", "yaml_config"]
+    description: "Disabled VM example"
