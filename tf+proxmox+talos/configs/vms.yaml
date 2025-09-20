@@ -1,0 +1,72 @@
+global:
+  node_name: "pve1"
+  datastore_id: "local-lvm"
+  gateway: "10.11.12.52"
+  dns_servers: ["10.11.12.52"]
+  cores: 2
+  ram: 2048
+  disk_size: 20
+  pool_id: null
+  boot_order: ["sata0"]
+  startup_order: 2
+  startup_up_delay: 5
+  cpu_type: "host"
+  network_bridge: "vmbr0"
+  os_type: "l26"
+
+tags:
+  - terraform
+
+vms:
+  talos-cp-01:
+    node_name: "pve3"
+    enabled: false
+    vm_id: 400
+    address: "10.11.12.200/24"
+    tags: ["talos", "kubernetes"]
+    description: "Talos Linux VM for Kubernetes cluster"
+    image_file: "memini:import/talos-nocloud-1.11.1.qcow2"
+    user_data_file_id: "memini:snippets/talos-controlplane.yaml"
+    os_type: "l26"
+    cores: 2
+    ram: 2048
+    disk_size: 10
+  talos-cp-02:
+    node_name: "pve4"
+    enabled: false
+    vm_id: 402
+    address: "10.11.12.202/24"
+    tags: ["talos", "kubernetes"]
+    description: "Talos Linux VM for Kubernetes cluster"
+    image_file: "memini:import/talos-nocloud-1.11.1.qcow2"
+    user_data_file_id: "memini:snippets/talos-controlplane.yaml"
+    os_type: "l26"
+    cores: 2
+    ram: 2048
+    disk_size: 10
+  talos-cp-03:
+    node_name: "pve5"
+    enabled: false
+    vm_id: 403
+    address: "10.11.12.203/24"
+    tags: ["talos", "kubernetes"]
+    description: "Talos Linux VM for Kubernetes cluster"
+    image_file: "memini:import/talos-nocloud-1.11.1.qcow2"
+    user_data_file_id: "memini:snippets/talos-controlplane.yaml"
+    os_type: "l26"
+    cores: 2
+    ram: 2048
+    disk_size: 10
+  talos-worker-01:
+    node_name: "pve5"
+    enabled: false
+    vm_id: 404
+    address: "10.11.12.204/24"
+    tags: ["talos", "kubernetes"]
+    description: "Talos Linux VM for Kubernetes cluster"
+    image_file: "memini:import/talos-nocloud-1.11.1.qcow2"
+    user_data_file_id: "memini:snippets/talos-worker.yaml"
+    os_type: "l26"
+    cores: 2
+    ram: 2048
+    disk_size: 10
